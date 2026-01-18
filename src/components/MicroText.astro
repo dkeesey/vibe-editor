@@ -5,17 +5,19 @@
  * Renders text from frontmatter with a data attribute
  * that the editor can hook into for inline editing.
  *
- * Supports inline markdown: **bold**, *italic*, [links](url)
+ * Supports:
+ * - Inline markdown: **bold**, *italic*, [links](url)
+ * - Nested paths: "features.0.title" for array items
  *
  * Usage:
  *   <MicroText id="hero-headline" as="h1" class="text-4xl font-bold" />
- *   <MicroText id="cta" as="span" markdown={false} />
+ *   <MicroText id="features.0.title" as="h3" class="text-xl" />
  */
 
 import { marked } from 'marked'
 
 interface Props {
-  /** The key in frontmatter.microtext */
+  /** The key in frontmatter.microtext (supports dot notation for nesting) */
   id: string
   /** HTML element to render (default: span) */
   as?: keyof HTMLElementTagNameMap
@@ -27,14 +29,29 @@ interface Props {
   [key: string]: any
 }
 
+// Helper to get nested value by dot-notation path
+function getNestedValue(obj: any, path: string): any {
+  return path.split('.').reduce((current, key) => {
+    if (current === undefined || current === null) return undefined
+    // Handle array index
+    const index = parseInt(key, 10)
+    if (!isNaN(index) && Array.isArray(current)) {
+      return current[index]
+    }
+    return current[key]
+  }, obj)
+}
+
 const { id, as: Element = 'span', class: className, markdown = true, ...rest } = Astro.props
 
 // Get microtext from Astro.locals (set by layout)
 const microtext = (Astro.locals as any).microtext || {}
-const rawText = microtext[id] || `[missing: ${id}]`
+
+// Support both flat keys and nested paths
+const rawText = getNestedValue(microtext, id) ?? microtext[id] ?? `[missing: ${id}]`
 
 // Parse inline markdown (no <p> wrapper)
-const html = markdown ? marked.parseInline(rawText) : rawText
+const html = markdown ? marked.parseInline(String(rawText)) : String(rawText)
 ---
 
 <Element

@@ -10,6 +10,7 @@
 
 import MicrotextEditor from '../components/MicrotextEditor.tsx'
 import PublishButton from '../components/PublishButton.tsx'
+import SyncButton from '../components/SyncButton.tsx'
 
 interface Props {
   frontmatter: {
@@ -50,9 +51,17 @@ const pageSlug = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index'
         float: left;
         height: 0;
       }
+
+      /* Edit-only elements hidden by default, visible in edit mode */
+      .edit-only {
+        display: none;
+      }
+      body.edit-mode .edit-only {
+        display: flex;
+      }
     </style>
   </head>
-  <body class="min-h-screen bg-white text-gray-900 antialiased">
+  <body class={`min-h-screen bg-white text-gray-900 antialiased ${isEditMode ? 'edit-mode' : ''}`}>
     {isEditMode && (
       <div class="bg-yellow-50 border-b border-yellow-200 px-4 py-2 text-center text-sm text-yellow-800">
         <strong>Edit Mode</strong> — Click any highlighted text to edit.
@@ -73,6 +82,7 @@ const pageSlug = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index'
           pageSlug={pageSlug}
           initialContent={frontmatter.microtext || {}}
         />
+        <SyncButton client:load pageSlug={pageSlug} />
         <PublishButton client:load />
       </>
     )}
