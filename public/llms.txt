@@ -1,0 +1,71 @@
+# llms.txt - AI/LLM Discovery File
+# https://llmstxt.org/
+
+# What is this?
+> Vibe Editor is an open-source MDX-based inline editing CMS built with Astro. It enables click-to-edit functionality on live pages with three-tier persistence: localStorage (instant), server API (file updates), and git (version control).
+
+# Core Concepts
+
+## Microtext
+Microtext is structured, editable content stored in MDX frontmatter. Each piece of text has a unique ID and can be edited inline on the rendered page. Supports markdown formatting.
+
+## Three-Tier Persistence
+1. localStorage: Instant saves, client-side, persists across refreshes
+2. Server API: Updates MDX frontmatter files on disk
+3. Git Publish: Batched commits for version control
+
+## Architecture
+- Framework: Astro with MDX integration
+- Editor: Tiptap (React island with client:load)
+- Storage: MDX files with YAML frontmatter
+- Styling: Tailwind CSS
+
+# Key Files
+
+## Documentation
+- /README.md - Getting started guide
+
+## Source Code
+- /src/components/MicroText.astro - Renders editable text from frontmatter
+- /src/components/MicrotextEditor.tsx - Tiptap inline editor component
+- /src/components/SyncButton.tsx - Syncs localStorage drafts to server
+- /src/lib/microtext-store.ts - localStorage draft management
+- /src/pages/api/microtext.ts - API for updating frontmatter values
+- /src/pages/api/publish.ts - Git commit API for batched publishing
+- /src/layouts/MdxLayout.astro - Page wrapper with edit mode support
+
+# Usage Pattern
+
+```yaml
+# In MDX frontmatter (structured, editable)
+microtext:
+  hero-headline: "Build sites that feel **alive**"
+  cta-button: "Get Started"
+  features:
+    - title: "Fast"
+      desc: "Sub-second builds."
+```
+
+```astro
+<!-- In MDX body (structure, developer-controlled) -->
+<MicroText id="hero-headline" as="h1" class="text-5xl" />
+<MicroText id="features.0.title" as="h3" />
+```
+
+# FAQ
+
+Q: What is the difference between microtext and MDX body content?
+A: Microtext (frontmatter) is structured, client-editable content. MDX body defines page structure and is developer-controlled.
+
+Q: How does inline editing work?
+A: Click any text with a data-microtext attribute. A Tiptap popup editor opens. Save to localStorage instantly, then sync to server when ready.
+
+Q: Does it support markdown?
+A: Yes. Microtext values can include inline markdown like **bold** and *italic* which renders on the page.
+
+Q: How is content versioned?
+A: Content is stored in MDX files tracked by git. The Publish button creates batched commits.
+
+# Contact
+- Repository: https://github.com/dkeesey/vibe-editor
+- License: MIT
