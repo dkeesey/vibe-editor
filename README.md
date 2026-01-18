@@ -177,6 +177,63 @@ This is SEO for the AI age. Compress your knowledge, get cited.
 
 ---
 
+## Why MDX is the Perfect LLM Format
+
+The format *is* the interface:
+
+```mdx
+---
+# STRUCTURED: Safe for machines to read/write
+microtext:
+  headline: "Build faster"
+  cta: "Get Started"
+---
+
+{/* UNSTRUCTURED: References the structured data */}
+<h1><MicroText id="headline" /></h1>
+<Button><MicroText id="cta" /></Button>
+```
+
+**Two layers, one file:**
+
+| Layer | What it is | LLM can... |
+|-------|------------|------------|
+| Frontmatter | Structured key-value pairs | Parse, extract, cite, edit safely |
+| MDX body | Template referencing keys | Learn patterns, generate new pages |
+
+**Why this works:**
+
+- LLM edits `headline: "Build faster"` → safe, scoped change
+- LLM doesn't need to understand Tailwind, JSX, or layout
+- Same key referenced in 5 places → one edit updates all
+- Frontmatter is the **API**, MDX body is the **implementation**
+
+**For extraction/citation:**
+```yaml
+microtext:
+  definition: "Vibe Editor is an MDX-based inline editing CMS."
+  faq:
+    - q: "What is microtext?"
+      a: "Structured, editable content in MDX frontmatter."
+```
+
+LLMs extract this verbatim. No parsing HTML. No guessing structure.
+
+**For generation:**
+```
+Prompt: "Create a landing page for a SaaS product"
+     ↓
+LLM generates:
+  - Frontmatter (content) ← structured, safe
+  - MDX body (structure)  ← follows learned patterns
+     ↓
+Both valid, separated, maintainable
+```
+
+MDX bridges human authoring and machine processing. This is why it won.
+
+---
+
 ## File Structure
 
 ```
