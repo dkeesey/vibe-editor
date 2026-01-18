@@ -249,11 +249,77 @@ src/
 ├── pages/
 │   ├── api/
 │   │   ├── microtext.ts      # Save edits API
+│   │   ├── ai-edit.ts        # Natural language editing
 │   │   └── publish.ts        # Git commit API
 │   └── index.mdx             # Example page
 public/
 └── llms.txt                  # LLM discovery file
+mcp-server/
+├── index.js                  # MCP server for AI assistants
+└── package.json
 ```
+
+---
+
+## AI-Native Features
+
+### Natural Language Editing
+
+```bash
+POST /api/ai-edit
+{
+  "instruction": "Make the headline more urgent",
+  "pageSlug": "index",
+  "apply": false
+}
+```
+
+The AI reads current microtext, interprets your instruction, and returns a preview:
+
+```json
+{
+  "success": true,
+  "changes": [{
+    "id": "hero-headline",
+    "oldValue": "Build sites that feel alive",
+    "newValue": "Ship today, not tomorrow",
+    "reasoning": "Made more urgent with time pressure"
+  }],
+  "applied": false
+}
+```
+
+Set `apply: true` to make the change.
+
+### MCP Server
+
+AI assistants can edit content directly via [Model Context Protocol](https://modelcontextprotocol.io):
+
+```bash
+cd mcp-server && npm install
+```
+
+Add to Claude Code (`~/.claude/mcp_servers.json`):
+
+```json
+{
+  "vibe-editor": {
+    "command": "node",
+    "args": ["/path/to/vibe-editor/mcp-server/index.js"],
+    "env": {
+      "VIBE_EDITOR_URL": "http://localhost:4321"
+    }
+  }
+}
+```
+
+Then you can say:
+- *"List the pages in my vibe-editor site"*
+- *"Show me the content on the index page"*
+- *"Change the headline to 'Ship faster'"*
+- *"Make the CTA more urgent"*
+
+Claude edits your content directly. No browser needed.
 
 ---
 
