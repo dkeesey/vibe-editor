@@ -3,26 +3,27 @@ layout: ../layouts/MdxLayout.astro
 title: Welcome to Vibe Editor
 description: MDX-based inline editing for modern websites
 microtext:
-  hero-headline: Build sites that feel **alive**
-  hero-subhead: Click any text. Edit in place. Ship *instantly*. so cool!!!
+  hero-headline: Create magic with every click
+  hero-subhead: Click any text. Edit in place. Ship *instantly*.
   cta-primary: Try It Now
   cta-secondary: Learn More
-  feature-1-title: Inline Editing
-  feature-1-desc: No more switching between preview and code. Just **click** and type.
-  feature-2-title: MDX Powered
-  feature-2-desc: Full component flexibility. *Tailwind* styling. React islands.
-  feature-3-title: AI Ready
-  feature-3-desc: 'Same interface for humans and AI. Generate, edit, iterate.'
-  testimonial-text: >-
-    This is how websites *should* work. Simple but **powerful**. and it's
-    mysterious even to it's creator
+  features:
+    - title: Inline Editing
+      desc: No more switching between preview and code. Just **click** and type.
+    - title: MDX Powered
+      desc: Full component flexibility. *Tailwind* styling. React islands.
+    - title: AI Ready
+      desc: 'Same interface for humans and AI. Generate, edit, iterate.'
+  testimonial-text: This is how websites *should* work. Simple but **powerful**.
   testimonial-author: — A Happy Developer
   footer-tagline: Made with **vibes**
 ---
 
 import MicroText from '../components/MicroText.astro'
 
-{/* Hero Section */}
+export const icons = ['✏️', '🧩', '🤖', '⭐', '🚀', '💡']
+export const colors = ['bg-blue-100', 'bg-purple-100', 'bg-green-100', 'bg-yellow-100', 'bg-pink-100', 'bg-orange-100']
+
 <section class="py-24 px-6 text-center bg-gradient-to-b from-blue-50 to-white">
   <div class="max-w-3xl mx-auto">
     <MicroText
@@ -53,60 +54,30 @@ import MicroText from '../components/MicroText.astro'
   </div>
 </section>
 
-{/* Features Section */}
 <section id="features" class="py-20 px-6">
-  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-    <div class="p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
-      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl mb-4">
-        ✏️
-      </div>
-      <MicroText
-        id="feature-1-title"
-        as="h3"
-        class="text-xl font-semibold text-gray-900"
-      />
-      <MicroText
-        id="feature-1-desc"
-        as="p"
-        class="mt-2 text-gray-600"
-      />
-    </div>
-
-    <div class="p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
-      <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-2xl mb-4">
-        🧩
-      </div>
-      <MicroText
-        id="feature-2-title"
-        as="h3"
-        class="text-xl font-semibold text-gray-900"
-      />
-      <MicroText
-        id="feature-2-desc"
-        as="p"
-        class="mt-2 text-gray-600"
-      />
-    </div>
-
-    <div class="p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
-      <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-2xl mb-4">
-        🤖
-      </div>
-      <MicroText
-        id="feature-3-title"
-        as="h3"
-        class="text-xl font-semibold text-gray-900"
-      />
-      <MicroText
-        id="feature-3-desc"
-        as="p"
-        class="mt-2 text-gray-600"
-      />
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8">
+      {frontmatter.microtext.features.map((feature, i) => (
+        <div class="p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors" key={i}>
+          <div class={`w-12 h-12 ${colors[i % colors.length]} rounded-lg flex items-center justify-center text-2xl mb-4`}>
+            {icons[i % icons.length]}
+          </div>
+          <MicroText
+            id={`features.${i}.title`}
+            as="h3"
+            class="text-xl font-semibold text-gray-900"
+          />
+          <MicroText
+            id={`features.${i}.desc`}
+            as="p"
+            class="mt-2 text-gray-600"
+          />
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
-{/* Testimonial */}
 <section class="py-16 px-6 bg-gray-900">
   <div class="max-w-2xl mx-auto text-center">
     <MicroText
@@ -122,7 +93,6 @@ import MicroText from '../components/MicroText.astro'
   </div>
 </section>
 
-{/* Footer */}
 <footer class="py-8 px-6 text-center text-gray-500">
   <MicroText id="footer-tagline" as="p" />
 </footer>
