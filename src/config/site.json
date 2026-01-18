@@ -1,0 +1,72 @@
+{
+  "name": "Vibe Editor",
+  "tagline": "Edit in place. Ship instantly.",
+  "logo": "/logo.svg",
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Features", "href": "/features" },
+    { "label": "Pricing", "href": "/pricing" },
+    { "label": "Docs", "href": "/docs" }
+  ],
+  "footer": {
+    "tagline": "The AI-native CMS for the compression era.",
+    "copyright": "2026 Vibe Editor. All rights reserved.",
+    "columns": [
+      {
+        "title": "Product",
+        "links": [
+          { "label": "Features", "href": "/features" },
+          { "label": "Pricing", "href": "/pricing" },
+          { "label": "Changelog", "href": "/changelog" },
+          { "label": "Roadmap", "href": "/roadmap" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          { "label": "Documentation", "href": "/docs" },
+          { "label": "API Reference", "href": "/docs/api" },
+          { "label": "Examples", "href": "/examples" },
+          { "label": "Blog", "href": "/blog" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About", "href": "/about" },
+          { "label": "Contact", "href": "/contact" },
+          { "label": "Careers", "href": "/careers" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          { "label": "Privacy Policy", "href": "/privacy" },
+          { "label": "Terms of Service", "href": "/terms" },
+          { "label": "Cookie Policy", "href": "/cookies" }
+        ]
+      }
+    ],
+    "social": [
+      { "platform": "twitter", "href": "https://twitter.com/vibedit", "label": "Twitter" },
+      { "platform": "github", "href": "https://github.com/dkeesey/vibe-editor", "label": "GitHub" },
+      { "platform": "discord", "href": "https://discord.gg/vibedit", "label": "Discord" },
+      { "platform": "youtube", "href": "https://youtube.com/@vibedit", "label": "YouTube" }
+    ],
+    "newsletter": {
+      "enabled": true,
+      "title": "Stay updated",
+      "description": "Get the latest news and updates.",
+      "placeholder": "Enter your email",
+      "buttonText": "Subscribe"
+    },
+    "contact": {
+      "email": "hello@vibedit.com",
+      "address": "San Francisco, CA"
+    },
+    "badges": [
+      { "label": "Made with Astro", "href": "https://astro.build" },
+      { "label": "Powered by Claude", "href": "https://anthropic.com" }
+    ]
+  }
+}
