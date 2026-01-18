@@ -1,0 +1,10 @@
+{
+  "vibe-editor": {
+    "command": "node",
+    "args": ["mcp-server/index.js"],
+    "env": {
+      "VIBE_EDITOR_URL": "http://localhost:4321",
+      "VIBE_EDITOR_ROOT": "/Users/deankeesey/Workspace/vibe-editor"
+    }
+  }
+}
