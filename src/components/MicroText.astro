@@ -1,0 +1,46 @@
+---
+/**
+ * MicroText - Editable text component with markdown support
+ *
+ * Renders text from frontmatter with a data attribute
+ * that the editor can hook into for inline editing.
+ *
+ * Supports inline markdown: **bold**, *italic*, [links](url)
+ *
+ * Usage:
+ *   <MicroText id="hero-headline" as="h1" class="text-4xl font-bold" />
+ *   <MicroText id="cta" as="span" markdown={false} />
+ */
+
+import { marked } from 'marked'
+
+interface Props {
+  /** The key in frontmatter.microtext */
+  id: string
+  /** HTML element to render (default: span) */
+  as?: keyof HTMLElementTagNameMap
+  /** CSS classes */
+  class?: string
+  /** Enable markdown parsing (default: true) */
+  markdown?: boolean
+  /** Any additional HTML attributes */
+  [key: string]: any
+}
+
+const { id, as: Element = 'span', class: className, markdown = true, ...rest } = Astro.props
+
+// Get microtext from Astro.locals (set by layout)
+const microtext = (Astro.locals as any).microtext || {}
+const rawText = microtext[id] || `[missing: ${id}]`
+
+// Parse inline markdown (no <p> wrapper)
+const html = markdown ? marked.parseInline(rawText) : rawText
+---
+
+<Element
+  data-microtext={id}
+  data-microtext-raw={rawText}
+  class={className}
+  {...rest}
+  set:html={html}
+/>

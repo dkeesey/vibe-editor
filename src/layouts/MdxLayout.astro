@@ -1,0 +1,80 @@
+---
+/**
+ * MdxLayout - Wrapper for MDX pages
+ *
+ * Provides:
+ * - Microtext context to child components
+ * - Edit mode toggle via ?edit query param
+ * - Base HTML structure with Tailwind
+ */
+
+import MicrotextEditor from '../components/MicrotextEditor.tsx'
+import PublishButton from '../components/PublishButton.tsx'
+
+interface Props {
+  frontmatter: {
+    title?: string
+    description?: string
+    microtext?: Record<string, string>
+  }
+}
+
+const { frontmatter } = Astro.props
+const isEditMode = Astro.url.searchParams.has('edit')
+
+// Make microtext available to MicroText components
+;(Astro.locals as any).microtext = frontmatter.microtext || {}
+
+// Derive page slug from URL path
+const pageSlug = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'index'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{frontmatter.title || 'Vibe Editor'}</title>
+    {frontmatter.description && (
+      <meta name="description" content={frontmatter.description} />
+    )}
+    <style is:global>
+      /* Tiptap editor styling */
+      .ProseMirror {
+        outline: none;
+      }
+      .ProseMirror p.is-editor-empty:first-child::before {
+        content: attr(data-placeholder);
+        color: #adb5bd;
+        pointer-events: none;
+        float: left;
+        height: 0;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-white text-gray-900 antialiased">
+    {isEditMode && (
+      <div class="bg-yellow-50 border-b border-yellow-200 px-4 py-2 text-center text-sm text-yellow-800">
+        <strong>Edit Mode</strong> — Click any highlighted text to edit.
+        <a href={Astro.url.pathname} class="ml-2 underline hover:no-underline">
+          Exit edit mode
+        </a>
+      </div>
+    )}
+
+    <main>
+      <slot />
+    </main>
+
+    {isEditMode && (
+      <>
+        <MicrotextEditor
+          client:load
+          pageSlug={pageSlug}
+          initialContent={frontmatter.microtext || {}}
+        />
+        <PublishButton client:load />
+      </>
+    )}
+  </body>
+</html>
