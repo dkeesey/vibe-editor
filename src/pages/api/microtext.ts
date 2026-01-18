@@ -6,6 +6,7 @@
  * Request body:
  *   { pageSlug: string, id: string, value: string }
  *
+ * Supports nested paths like "features.0.title" for array items
  * The pageSlug maps to src/pages/{pageSlug}.mdx
  */
 
@@ -15,6 +16,43 @@ import path from 'path'
 import matter from 'gray-matter'
 
 const PAGES_DIR = path.join(process.cwd(), 'src/pages')
+
+// Helper to set a nested value by dot-notation path
+function setNestedValue(obj: any, pathStr: string, value: any): void {
+  const parts = pathStr.split('.')
+  let current = obj
+
+  for (let i = 0; i < parts.length - 1; i++) {
+    const key = parts[i]
+    const nextKey = parts[i + 1]
+    const nextIsIndex = !isNaN(parseInt(nextKey, 10))
+
+    if (current[key] === undefined) {
+      current[key] = nextIsIndex ? [] : {}
+    }
+    current = current[key]
+  }
+
+  const lastKey = parts[parts.length - 1]
+  const index = parseInt(lastKey, 10)
+  if (!isNaN(index) && Array.isArray(current)) {
+    current[index] = value
+  } else {
+    current[lastKey] = value
+  }
+}
+
+// Helper to get a nested value by dot-notation path
+function getNestedValue(obj: any, pathStr: string): any {
+  return pathStr.split('.').reduce((current, key) => {
+    if (current === undefined || current === null) return undefined
+    const index = parseInt(key, 10)
+    if (!isNaN(index) && Array.isArray(current)) {
+      return current[index]
+    }
+    return current[key]
+  }, obj)
+}
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -73,9 +111,17 @@ export const POST: APIRoute = async ({ request }) => {
       frontmatter.microtext = {}
     }
 
-    // Update the specific key
-    const oldValue = frontmatter.microtext[id]
-    frontmatter.microtext[id] = value
+    // Get old value (supports nested paths)
+    const oldValue = id.includes('.')
+      ? getNestedValue(frontmatter.microtext, id)
+      : frontmatter.microtext[id]
+
+    // Update the value (supports nested paths like "features.0.title")
+    if (id.includes('.')) {
+      setNestedValue(frontmatter.microtext, id, value)
+    } else {
+      frontmatter.microtext[id] = value
+    }
 
     // Reconstruct the file
     const updatedFile = matter.stringify(mdxBody, frontmatter)
