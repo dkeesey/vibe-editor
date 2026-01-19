@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "design": "tsx scripts/generate-design.ts",
+    "design:json": "tsx scripts/generate-design-json.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",
@@ -27,6 +29,9 @@
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.0"
+    "sqlite3": "^5.1.7",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.0",
+    "yaml": "^2.8.2"
   }
 }
