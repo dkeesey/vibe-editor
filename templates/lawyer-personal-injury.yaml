@@ -1,0 +1,65 @@
+# Lawyer Template - Personal Injury Attorney
+# Example microtext structure for law firm
+
+hero:
+  headline: "Injured? We Fight For You."
+  subhead: "Bay Area Personal Injury Attorneys"
+  description: "No fees unless we win. Free consultation. 25+ years recovering millions for injury victims."
+  cta_primary: "Free Case Review"
+  cta_secondary: "Call Now: (415) 555-9876"
+
+features:
+  - title: "No Fees Unless We Win"
+    desc: "We only get paid if we recover compensation for you"
+    icon: "gavel"
+  - title: "Millions Recovered"
+    desc: "Over $50M recovered for injury victims since 1998"
+    icon: "trophy"
+  - title: "Free Consultation"
+    desc: "Discuss your case with an experienced attorney, no obligation"
+    icon: "chat"
+  - title: "Trial-Proven Results"
+    desc: "Not afraid to take cases to court when insurance won't settle fairly"
+    icon: "courthouse"
+
+services:
+  headline: "Practice Areas"
+  list:
+    - name: "Car Accidents"
+      desc: "Rear-end collisions, T-bone crashes, pedestrian accidents"
+      results: "Average settlement: $125K"
+    - name: "Motorcycle Accidents"
+      desc: "Serious injuries from motorcycle collisions"
+      results: "Recent verdict: $2.3M"
+    - name: "Slip & Fall"
+      desc: "Premises liability, unsafe property conditions"
+      results: "Settlement range: $50K-$500K"
+    - name: "Medical Malpractice"
+      desc: "Surgical errors, misdiagnosis, birth injuries"
+      results: "Largest case: $4.1M"
+
+about:
+  headline: "Experienced Trial Attorneys"
+  bio: "Led by attorney Sarah Johnson, our team has recovered over $50 million for injury victims. We don't back down from insurance companies."
+  credentials:
+    - "25+ years combined experience"
+    - "Super Lawyers Rising Star (2020-2024)"
+    - "Trial Law Association Member"
+    - "Martindale-Hubbell AV Rated"
+
+testimonials:
+  - text: "They got me $250K when the insurance company offered $15K. Excellent attorneys."
+    author: "John M."
+    case: "Car accident settlement"
+  - text: "Sarah fought for me when I couldn't fight for myself. Forever grateful."
+    author: "Maria G."
+    case: "Slip and fall verdict"
+
+contact:
+  headline: "Free Case Evaluation"
+  phone: "(415) 555-9876"
+  available: "24/7 Emergency Line"
+  offices:
+    - "San Francisco: 456 Market St, Suite 900"
+    - "Oakland: 789 Broadway, Suite 200"
+  note: "We come to you if you can't come to us"

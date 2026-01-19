@@ -1,0 +1,59 @@
+# Therapist Template - EMDR Specialist
+# Example microtext structure for Oakland therapist
+
+hero:
+  headline: "Oakland EMDR Therapy"
+  subhead: "Trauma healing with proven techniques"
+  description: "I help clients process trauma and anxiety using EMDR (Eye Movement Desensitization and Reprocessing) therapy. Compassionate, evidence-based care in a safe environment."
+  cta_primary: "Book Free Consultation"
+  cta_secondary: "Learn About EMDR"
+
+features:
+  - title: "EMDR Certified"
+    desc: "Trained in Eye Movement Desensitization and Reprocessing (EMDR) therapy for trauma treatment"
+    icon: "certificate"
+  - title: "Insurance Accepted"
+    desc: "Blue Shield, Aetna, United Healthcare, and Cigna accepted"
+    icon: "shield"
+  - title: "Evening & Weekend Hours"
+    desc: "Flexible scheduling including evenings until 8pm and Saturday mornings"
+    icon: "clock"
+  - title: "LGBTQ+ Affirming"
+    desc: "Safe, inclusive space for all identities and backgrounds"
+    icon: "heart"
+
+about:
+  headline: "Compassionate, Evidence-Based Care"
+  bio: "I'm a licensed therapist specializing in EMDR therapy for trauma, anxiety, and PTSD. My approach combines evidence-based techniques with deep compassion for your unique journey."
+  credentials:
+    - "LMFT (Licensed Marriage & Family Therapist)"
+    - "EMDR International Association Certified"
+    - "15+ years clinical experience"
+
+services:
+  headline: "Specializations"
+  list:
+    - name: "EMDR Therapy"
+      desc: "Trauma processing through bilateral stimulation"
+    - name: "Anxiety & Depression"
+      desc: "Cognitive-behavioral approaches for mood disorders"
+    - name: "Relationship Issues"
+      desc: "Couples and family therapy"
+    - name: "PTSD Treatment"
+      desc: "Specialized trauma-informed care"
+
+testimonials:
+  - text: "EMDR therapy helped me process trauma I'd carried for 20 years. I finally feel free."
+    author: "Former Client"
+    treatment: "EMDR for childhood trauma"
+  - text: "Compassionate, skilled, and created such a safe space. Highly recommend."
+    author: "Current Client"
+    treatment: "Anxiety treatment"
+
+contact:
+  headline: "Start Your Healing Journey"
+  address: "123 Broadway, Oakland CA 94612"
+  phone: "(510) 555-1234"
+  email: "contact@oaklandemdr.com"
+  availability: "Evening & weekend appointments available"
+  insurance_note: "Most major insurance accepted. Sliding scale available."

@@ -1,0 +1,73 @@
+# Home Service Template - HVAC Company
+# Example microtext structure for heating/cooling service
+
+hero:
+  headline: "Bay Area HVAC Experts"
+  subhead: "Same-Day Service • 24/7 Emergency"
+  description: "Family-owned HVAC service since 1985. Heating, cooling, and air quality solutions for your home or business."
+  cta_primary: "Call Now: (510) 555-HVAC"
+  cta_secondary: "Schedule Online"
+  emergency_badge: "🚨 24/7 Emergency Service Available"
+
+features:
+  - title: "Same-Day Service"
+    desc: "Call before noon, fixed same day (subject to availability)"
+    icon: "clock"
+  - title: "Licensed & Insured"
+    desc: "CA contractor license #123456, fully insured"
+    icon: "shield"
+  - title: "Upfront Pricing"
+    desc: "No hidden fees. Price quoted before work begins."
+    icon: "receipt"
+  - title: "Satisfaction Guaranteed"
+    desc: "Not happy? We'll make it right or your money back."
+    icon: "thumbs-up"
+
+services:
+  headline: "Our Services"
+  list:
+    - name: "Air Conditioning"
+      desc: "Repair, installation, maintenance"
+      price_from: "$89 diagnostic"
+    - name: "Heating Systems"
+      desc: "Furnace repair, heat pump service"
+      price_from: "$89 diagnostic"
+    - name: "Air Quality"
+      desc: "Duct cleaning, air purifiers, filters"
+      price_from: "$199"
+    - name: "Emergency Service"
+      desc: "24/7 no-heat, no-AC emergency calls"
+      price_from: "$150 after-hours fee"
+
+service_area:
+  headline: "We Service The Entire East Bay"
+  cities:
+    - Oakland
+    - Berkeley
+    - Alameda
+    - Piedmont
+    - Emeryville
+  note: "Call for service outside these areas"
+
+pricing:
+  headline: "Transparent Pricing"
+  diagnostic_fee: "$89"
+  diagnostic_waived: "Waived if you proceed with repair"
+  financing: "0% financing available (OAC)"
+  senior_discount: "10% senior & military discount"
+
+testimonials:
+  - text: "Our AC died in July. They came out same day and had it running in 2 hours. Fair price, great service."
+    author: "Lisa T."
+    location: "Oakland"
+  - text: "Been using them for 10 years. Always reliable, always fair pricing."
+    author: "Mike R."
+    location: "Berkeley"
+
+contact:
+  headline: "Get Service Today"
+  phone: "(510) 555-HVAC"
+  hours: "Mon-Fri 7am-7pm, Sat 8am-5pm"
+  emergency: "24/7 emergency service available"
+  address: "1234 San Pablo Ave, Oakland CA 94608"
+  license: "CA License #123456"
