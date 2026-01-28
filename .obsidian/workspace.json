@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "README-NANOBANANA"
             }
+          },
+          {
+            "id": "fafb829b9f8d8d16",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.5"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.5"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,7 +196,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "999610d6101d8578",
+  "active": "fafb829b9f8d8d16",
   "lastOpenFiles": [
     "CLAUDE.md",
     "SYSTEM-COMPLETE.md",
